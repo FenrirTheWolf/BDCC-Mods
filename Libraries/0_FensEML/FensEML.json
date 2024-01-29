@@ -1,6 +1,6 @@
 {
     "name": "FensEML",
-    "description": "\n\nThis mod is a library,\nIt's designed to add a modular elevator or ladder system to traverse new areas / floors.\n\nIf you have any feedback send it in #mods-discussion and ping me,\nor open an issue on [url]https://github.com/FenrirTheWolf/BDCC-Mods/Libraries/FensEML/issues[/url].",
+    "description": "\n\nThis mod is a library,\nIt's designed to add a modular elevator or ladder system to traverse new areas / floors.\n\nIf you have any feedback send it in #mods-discussion and ping me,\nor open an issue on [url]https://github.com/FenrirTheWolf/BDCC-Mods/issues[/url].",
     "author": "Fenrir",
     "modversion": "B0.0.01",
     "gameversion": "0.1.2"
