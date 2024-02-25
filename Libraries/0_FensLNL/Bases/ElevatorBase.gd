@@ -1,16 +1,19 @@
-extends "res://Scenes/SceneBase.gd"
+extends SceneBase
 
 class_name ElevatorBase
 
 var floors = [
 	# Examples of floors
 	# Button Text, Location, Description
-#	["Cellblock", "hall_elevator", "Main level where all the inmate cells are"],
-#	["Mineshafts", "mining_elevator", "Lower level where the prison is attached to an asteroid"],
-#	["Medical", "med_elevator", "Floor that has all the medical and science facilities"],
+	# ["Cellblock", "hall_elevator", "Main level where all the inmate cells are"],
+	# ["Mineshafts", "mining_elevator", "Lower level where the prison is attached to an asteroid"],
+	# ["Medical", "med_elevator", "Floor that has all the medical and science facilities"],
 ]
 
 var flrtorem = []
+var type = "Elevator"
+var id = "ElevatorBase"
+#var level = 0
 
 func _init():
 	sceneID = "ElevatorScene"
@@ -28,7 +31,7 @@ func getFloors():
 	if !(floors.empty()):
 		for fl in floors:
 			if(fl[1] == GM.pc.location):
-				addDisabledButton(fl[0], "You are already here")
+				addDisabledButton(fl[0], "You're already here")
 			else:
 				# Text, Tooltip, gofloor, location
 				addButton(fl[0], fl[2], "gofloor", [fl[1]])
@@ -92,6 +95,34 @@ func addFloorUnlessLate(text: String, tooltip: String = "", arg: String = "", la
 		addDisabledButton(text, latetext)
 	else:
 		addButton(text, tooltip, arg)
+		
+func Enter(Type: String):
+	if Type == "Elevator":
+		saynn("You enter the lift and look at the panel, your inmate access allows you to go only to certain floors")
+		
+		saynn("Where do you want the lift to go?")
+	elif Type == "Ladder":
+		saynn("You grab onto the ladder, placing both your feet onto it before pausing")
+		
+		saynn("What floor will you climb to?")
+	elif Type == "Stairs":
+		saynn("You enter the staircase, pondering where to go")
+		
+		saynn("What floor do you want to go to?")
+		
+func Exit(Type: String):
+	if Type == "Elevator":
+		saynn("With a screeching noise, the doors close and the lift begins to move towards some other floor")
+
+		saynn("You lean against one of the walls and just wait for the lift to arrive which it eventually does")
+	elif Type == "Ladder":
+		saynn("With a screeching noise, the doors close and the lift begins to move towards some other floor")
+
+		saynn("You lean against one of the walls and just wait for the lift to arrive which it eventually does")
+	elif Type == "Stairs":
+		saynn("With a screeching noise, the doors close and the lift begins to move towards some other floor")
+
+		saynn("You lean against one of the walls and just wait for the lift to arrive which it eventually does")
 
 func removeFloor(floor_name: String):
 	for i in range(floors.size()):
@@ -111,3 +142,4 @@ func changeFloor(floor_name):
 			GM.pc.setLocation(target_floor[1])
 			aimCamera(target_floor[1])
 			removeFloor(target_floor[1])
+#			print(target_floor[1], ", ", current_floor)
